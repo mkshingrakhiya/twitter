@@ -1,0 +1,17 @@
+<h3 class="font-bold text-lg mb-4">Friends</h3>
+
+<ul>
+  @foreach (range(1, 10) as $item)
+    <li class="mb-4">
+      <div class="flex items-center text-sm">
+        <img
+          src="https://i.pravatar.cc/40"
+          alt=""
+          class="rounded-full mr-2"
+        >
+
+        John Doe
+      </div>
+    </li>
+  @endforeach
+</ul>

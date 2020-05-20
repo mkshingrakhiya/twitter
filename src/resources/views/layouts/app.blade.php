@@ -21,9 +21,24 @@
 </head>
 <body>
     <div id="app">
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <section class="px-8 py-4 mb-6">
+            <header class="container mx-auto">
+                <!-- TODO: Logo with the HTML5 best practice. -->
+                <h1>
+                    <img
+                        alt="Twitter Logo"
+                        src="{{ asset('/images/logo.svg') }}"
+                        width="50"
+                    >
+                </h1>
+            </header>
+          </section>
+          
+          <section class="px-8">
+            <main class="container mx-auto">
+                @yield('content')
+            </main>
+          </section>
     </div>
 </body>
 </html>
