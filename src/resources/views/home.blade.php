@@ -11,15 +11,12 @@
       @include('_compose-tweet-card')
 
       <div class="border border-gray-300 rounded-lg">
-        @include('_tweet')
-        @include('_tweet')
-        @include('_tweet')
-        @include('_tweet')
+        @each('_tweet', $tweets, 'tweet')
       </div>
     </div>
     
     <div class="lg:w-1/6 bg-blue-100 rounded-lg p-4">
-      @include('_friends')
+      @include('_following')
     </div>
   </div>
 </div>

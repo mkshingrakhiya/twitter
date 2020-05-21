@@ -23,14 +23,15 @@
     <div id="app">
         <section class="px-8 py-4 mb-6">
             <header class="container mx-auto">
-                <!-- TODO: Logo with the HTML5 best practice. -->
-                <h1>
+                <a class="items-center" href="{{ route('home') }}">
                     <img
                         alt="Twitter Logo"
                         src="{{ asset('/images/logo.svg') }}"
                         width="50"
                     >
-                </h1>
+
+                    <h1 class="font-bold text-xl">Twitter</h1>
+                </a>
             </header>
           </section>
           

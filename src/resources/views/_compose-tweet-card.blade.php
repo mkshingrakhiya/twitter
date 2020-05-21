@@ -1,29 +1,31 @@
 <div class="border border-blue-400 rounded-lg py-4 px-6 mb-8">
-  <form action="">
-    <!-- TODO: Change the placeholder -->
+  <form action="{{ route('tweets.store') }}" method="POST">
+    @csrf
+
     <textarea
-      class="w-full"
+      class="w-full mb-2"
       name="body"
-      placeholder="Tweet tweet!"
-      rows="3"
+      placeholder="What's happening?"
+      required
     ></textarea>
 
-    <hr class="py-2" />
-
-    <div class="flex justify-between">
+    <footer class="flex justify-between">
       <img
-        src="https://i.pravatar.cc/40"
-        alt=""
+        src="{{ Auth::user()->avatar }}"
+        alt="Your Avatar"
         class="rounded-full"
       >
 
-      <!-- TODO: Change text to match the original twitter. -->
+      @error('body')
+        <small class="text-red-500 ml-2 mr-auto self-center">{{ $message }}</small>
+      @enderror
+
       <button
         class="bg-blue-600 rounded-full shadow text-white py-2 px-4"
         type="submit"
       >
-        Tweet!
+        Tweet
       </button>
-    </div>
+    </footer>
   </form>
 </div>
