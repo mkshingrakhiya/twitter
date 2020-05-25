@@ -41,6 +41,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get all the followers of this user.
+     *
+     * @return BelongsToMany
+     */
+    public function followers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'follows', 'following_user_id', 'user_id');
+    }
+
+    /**
      * Get all the users followed by this user.
      *
      * @return BelongsToMany
@@ -61,13 +71,30 @@ class User extends Authenticatable
     }
 
     /**
+     * Get the cover image URL.
+     *
+     * @return string
+     */
+    public function getCoverImageAttribute(): string
+    {
+        return "https://source.unsplash.com/random/700x223";
+    }
+
+    /**
      * Get the timeline of this user.
      *
      * @return Collection
      */
     public function timeline(): Collection
     {
-        return Tweet::where('user_id', $this->id)->latest()->get();
+        return Tweet::where('user_id', $this->id)
+            ->orWhereHas('user', function ($query) {
+                $query->whereHas('followers', function ($query) {
+                    $query->where('user_id', $this->id);
+                });
+            })
+            ->latest()
+            ->get();
     }
 
     /**

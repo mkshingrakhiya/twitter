@@ -73,6 +73,14 @@
                 <div class="links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
+                        <a
+                            href="{{ url('/logout') }}"
+                            onclick="event.preventDefault(); document.querySelector('#logout-form').submit()"
+                        >
+                            Logout
+                        </a>
+                        
+                        <form action="{{ route('logout') }}" id="logout-form" method="POST">@csrf</form>
                     @else
                         <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a>
