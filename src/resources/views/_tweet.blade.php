@@ -1,4 +1,4 @@
-<div class="flex p-4 border-b border-gray-400">
+<div class="flex p-4 @unless ($loop->last) border-b border-gray-400 @endunless">
   <a class="flex-shrink-0 mr-3" href="{{ route('profiles.show', $tweet->user) }}">
     <img
       src="{{ $tweet->user->avatar }}"

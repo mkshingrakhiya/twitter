@@ -1,8 +1,21 @@
 <x-app>
-    <header class="mb-6 relative">
-        <img class="mb-2 rounded-2xl" src="{{ $user->cover_image }}" alt="Your cover image" />
+    <header class="mb-6">
+        <div class="relative">
+            <img
+                alt="Your cover image"
+                class="mb-2 rounded-2xl"
+                src="{{ $user->cover_image }}"
+            />
+    
+            <img
+                alt="Your avatar"
+                class="rounded-full absolute bottom-0 transform -translate-x-1/2 translate-y-1/2"
+                src="https://i.pravatar.cc/150?u={{ $user->id }}"
+                style="left: 50%;"
+            />
+        </div>
 
-        <div class="flex justify-between items-center mb-6">
+        <div class="flex justify-between items-center mb-8">
             <div>
                 <h2 class="font-bold text-xl">{{ $user->name }}</h2>
                 <p class="text-gray-600 text-sm">Joined {{ $user->created_at->diffForHumans() }}</p>
@@ -13,13 +26,11 @@
                     Edit Profile
                 </button>
 
-                <button class="bg-blue-500 rounded-full shadow text-white text-sm py-2 px-4" type="submit">
-                    Follow Me
-                </button>
+                <x-follow-button :user="$user"></x-follow-button>
             </div>
         </div>
 
-        <p class="text-sm">
+        <p class="text-sm text-gray-700">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
             standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
             a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
@@ -27,9 +38,6 @@
             Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
             of Lorem Ipsum.
         </p>
-
-        <img alt="Your avatar" class="rounded-full" src="https://i.pravatar.cc/150?u={{ $user->id }}"
-            style="position: absolute; top: calc(223px - 75px); left: calc(50% - 75px)" />
     </header>
 
     @include('_timeline', ['tweets' => $user->tweets])

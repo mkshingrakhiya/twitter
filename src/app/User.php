@@ -51,6 +51,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Determine if the user is following a user with a given userId.
+     *
+     * @param  int  $userId
+     * @return bool
+     */
+    public function following(int $userId): bool
+    {
+        return $this->follows()->where('following_user_id', $userId)->exists();
+    }
+
+    /**
      * Get all the users followed by this user.
      *
      * @return BelongsToMany

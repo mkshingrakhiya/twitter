@@ -1,3 +1,5 @@
 <div class="border border-gray-300 rounded-2xl">
-  @each('_tweet', $tweets, 'tweet')
+  @foreach ($tweets as $tweet)
+    @include('_tweet')
+  @endforeach
 </div>
