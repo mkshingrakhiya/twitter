@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 class ToggleFollowController extends Controller
 {
     /**
-     * Toggle follow the user.
+     * Toggle the following of the user.
      *
      * @param  User  $user
      * @return RedirectResponse

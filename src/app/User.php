@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'avatar', 'username', 'name', 'email', 'password',
     ];
 
     /**
@@ -76,9 +76,9 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getAvatarAttribute(): string
+    public function getAvatarAttribute(?string $filepath): ?string
     {
-        return "https://i.pravatar.cc/40?u={$this->id}";
+        return $filepath ? asset('storage/' . $filepath) : null;
     }
 
     /**
@@ -89,6 +89,17 @@ class User extends Authenticatable
     public function getCoverImageAttribute(): string
     {
         return "https://source.unsplash.com/random/700x223";
+    }
+
+    /**
+     * Hash the password.
+     *
+     * @param  string  $password
+     * @return void
+     */
+    public function setPasswordAttribute(string $password)
+    {
+        $this->attributes['password'] = bcrypt($password);
     }
 
     /**

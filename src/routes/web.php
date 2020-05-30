@@ -24,7 +24,13 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/tweets', 'TweetController@store')->name('tweets.store');
 
-    Route::get('/profiles/{user:name}', 'ProfileController@show')->name('profiles.show');
+    Route::get('/profiles/{user:username}', 'ProfileController@show')->name('profiles.show');
+    Route::get('/profiles/{user:username}/edit', 'ProfileController@edit')
+        ->name('profiles.edit')
+        ->middleware('can:update,user');
+    Route::put('/profiles/{user:username}/update', 'ProfileController@update')
+        ->name('profiles.update')
+        ->middleware('can:update,user');
 
-    Route::post('/profiles/{user:name}/follow', 'ToggleFollowController')->name('toggle-follow');
+    Route::post('/profiles/{user:username}/follow', 'ToggleFollowController')->name('toggle-follow');
 });

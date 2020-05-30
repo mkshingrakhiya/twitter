@@ -1,3 +1,4 @@
+@if (auth()->user()->isNot($user))
 <form action="{{ route('toggle-follow', $user) }}" class="inline" method="POST">
   @csrf
   
@@ -8,3 +9,4 @@
     {{ Auth::user()->following($user->id) ? 'Unfollow Me' : 'Follow Me' }}
   </button>
 </form>
+@endif

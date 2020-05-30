@@ -10,8 +10,9 @@
             <img
                 alt="Your avatar"
                 class="rounded-full absolute bottom-0 transform -translate-x-1/2 translate-y-1/2"
-                src="https://i.pravatar.cc/150?u={{ $user->id }}"
+                src="{{ $user->avatar }}"
                 style="left: 50%;"
+                width="150"
             />
         </div>
 
@@ -22,9 +23,13 @@
             </div>
 
             <div>
-                <button class="border border-gray-300 rounded-full text-black text-sm py-2 px-4 mr-2" type="submit">
+                @can('update', $user)
+                <a
+                    class="border border-gray-300 rounded-full text-black text-sm py-2 px-4 mr-2"
+                    href="{{ route('profiles.edit', $user) }}">
                     Edit Profile
-                </button>
+                </a>
+                @endcan
 
                 <x-follow-button :user="$user"></x-follow-button>
             </div>

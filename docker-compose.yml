@@ -51,18 +51,6 @@ services:
     networks:
       - default
 
-  artisan:
-    container_name: artisan
-    build: .
-    entrypoint: [ "php", "/var/www/html/artisan" ]
-    depends_on:
-      - mysql
-    volumes:
-      - ./src:/var/www/html
-    working_dir: /var/www/html
-    networks:
-      - default
-
   npm:
     container_name: npm
     image: node:13.7-alpine

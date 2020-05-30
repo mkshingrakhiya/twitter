@@ -14,6 +14,7 @@
         src="{{ Auth::user()->avatar }}"
         alt="Your Avatar"
         class="rounded-full"
+        width="40"
       >
 
       @error('body')
