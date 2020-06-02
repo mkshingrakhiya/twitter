@@ -18,14 +18,14 @@
 
         <div class="flex justify-between items-center mb-8">
             <div>
-                <h2 class="font-bold text-xl">{{ $user->name }}</h2>
+                <h2 class="font-bold text-xl" style="max-width: 200px;">{{ $user->name }}</h2>
                 <p class="text-gray-600 text-sm">Joined {{ $user->created_at->diffForHumans() }}</p>
             </div>
 
             <div>
                 @can('update', $user)
                 <a
-                    class="border border-gray-300 rounded-full text-black text-sm py-2 px-4 mr-2"
+                    class="border border-gray-300 rounded-full text-black text-sm py-2 px-4 mr-2 whitespace-no-wrap"
                     href="{{ route('profiles.edit', $user) }}">
                     Edit Profile
                 </a>
@@ -45,5 +45,5 @@
         </p>
     </header>
 
-    @include('_timeline', ['tweets' => $user->tweets])
+    @include('_timeline', ['tweets' => $tweets])
 </x-app>

@@ -22,9 +22,13 @@ Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
+    Route::get('/explore', 'ExploreController')->name('explore');
+
     Route::post('/tweets', 'TweetController@store')->name('tweets.store');
 
-    Route::get('/profiles/{user:username}', 'ProfileController@show')->name('profiles.show');
+    Route::get('/profiles/{user:username}', 'ProfileController@show')
+        ->name('profiles.show')
+        ->middleware('password.confirm');
     Route::get('/profiles/{user:username}/edit', 'ProfileController@edit')
         ->name('profiles.edit')
         ->middleware('can:update,user');

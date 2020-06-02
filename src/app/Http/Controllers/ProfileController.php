@@ -16,7 +16,9 @@ class ProfileController extends Controller
      */
     public function show(User $user): View
     {
-        return view('profiles.show', compact('user'));
+        $tweets = $user->tweets()->paginate();
+
+        return view('profiles.show', compact('user', 'tweets'));
     }
 
     /**

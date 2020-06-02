@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class User extends Authenticatable
 {
@@ -76,9 +76,9 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getAvatarAttribute(?string $filepath): ?string
+    public function getAvatarAttribute(?string $filepath): string
     {
-        return $filepath ? asset('storage/' . $filepath) : null;
+        return asset('storage/' . ($filepath ?: 'images/avatars/default.jpg'));
     }
 
     /**
@@ -105,9 +105,9 @@ class User extends Authenticatable
     /**
      * Get the timeline of this user.
      *
-     * @return Collection
+     * @return LengthAwarePaginator
      */
-    public function timeline(): Collection
+    public function timeline(): LengthAwarePaginator
     {
         return Tweet::where('user_id', $this->id)
             ->orWhereHas('user', function ($query) {
@@ -116,7 +116,7 @@ class User extends Authenticatable
                 });
             })
             ->latest()
-            ->get();
+            ->paginate();
     }
 
     /**

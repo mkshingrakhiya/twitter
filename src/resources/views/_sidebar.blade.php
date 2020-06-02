@@ -6,7 +6,7 @@
   </li>
 
   <li>
-    <a class="font-bold text-lg mb-1 block" href="/">
+    <a class="font-bold text-lg mb-1 block" href="{{ route('explore') }}">
       Explore
     </a>
   </li>
@@ -44,6 +44,19 @@
   <li>
     <a class="font-bold text-lg mb-1 block" href="/">
       More
+    </a>
+  </li>
+
+  <li>
+    <form action="{{ route('logout') }}" id="logout-form" method="POST">
+      @csrf
+    </form>
+
+    <a
+      class="font-bold text-lg mb-1 block"
+      href="{{ route('logout') }}"
+      onclick="event.preventDefault(); document.querySelector('#logout-form').submit()">
+      Logout
     </a>
   </li>
 </ul>

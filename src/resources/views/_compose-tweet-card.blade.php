@@ -14,19 +14,14 @@
         src="{{ Auth::user()->avatar }}"
         alt="Your Avatar"
         class="rounded-full"
-        width="40"
+        width="35"
       >
 
       @error('body')
         <small class="text-red-500 ml-2 mr-auto self-center">{{ $message }}</small>
       @enderror
 
-      <button
-        class="bg-blue-600 rounded-full shadow text-white py-2 px-4"
-        type="submit"
-      >
-        Tweet
-      </button>
+      <x-inputs.button rounded="2xl" type="submit">Tweet</x-inputs.button>
     </footer>
   </form>
 </div>

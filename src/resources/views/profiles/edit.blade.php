@@ -6,7 +6,8 @@
     <div class="mb-6">
       <label
         class="block uppercase font-bold text-xs text-gray-700 mb-2"
-        for="avatar">
+        for="avatar"
+      >
         Avatar
       </label>
 
@@ -33,7 +34,8 @@
     <div class="mb-6">
       <label
         class="block uppercase font-bold text-xs text-gray-700 mb-2"
-        for="username">
+        for="username"
+      >
         Username
       </label>
 
@@ -54,7 +56,8 @@
     <div class="mb-6">
       <label
         class="block uppercase font-bold text-xs text-gray-700 mb-2"
-        for="name">
+        for="name"
+      >
         Name
       </label>
 
@@ -75,7 +78,8 @@
     <div class="mb-6">
       <label
         class="block uppercase font-bold text-xs text-gray-700 mb-2"
-        for="email">
+        for="email"
+      >
         Email
       </label>
 
@@ -96,7 +100,8 @@
     <div class="mb-6">
       <label
         class="block uppercase font-bold text-xs text-gray-700 mb-2"
-        for="password">
+        for="password"
+      >
         Password
       </label>
 
@@ -116,7 +121,8 @@
     <div class="mb-6">
       <label
         class="block uppercase font-bold text-xs text-gray-700 mb-2"
-        for="password-confirmation">
+        for="password-confirmation"
+      >
         Confirm Password
       </label>
 
@@ -127,17 +133,10 @@
         id="password-confirmation"
         required
       />
-
-      @error('password')
-        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-      @enderror
     </div>
 
-    <button
-      class="py-2 px-3 bg-blue-500 rounded-lg text-white"
-      type="submit"
-    >
-      Submit
-    </button>
+    <x-inputs.button class="mr-4" rounded="2xl" type="submit">Submit</x-inputs.button>
+
+    <a class="hover:underline" href="{{ route('profiles.show', $user) }}">Cancel</a>
   </form>
 </x-app>
