@@ -27,31 +27,31 @@ class Profile extends FormRequest
         $user = $this->route('user');
 
         return [
-            'avatar' => ['file'],
+            'avatar'   => ['file'],
             'username' => [
                 'required',
                 'string',
                 'alpha_dash',
                 'max:255',
-                Rule::unique('users')->ignore($user)
+                Rule::unique('users')->ignore($user),
             ],
             'name' => [
                 'required',
                 'string',
-                'max:255'
+                'max:255',
             ],
             'email' => [
                 'required',
                 'string',
                 'email',
                 'max:255',
-                Rule::unique('users')->ignore($user)
+                Rule::unique('users')->ignore($user),
             ],
             'password' => [
                 'required',
                 'string',
                 'min:8',
-                'confirmed'
+                'confirmed',
             ],
         ];
     }

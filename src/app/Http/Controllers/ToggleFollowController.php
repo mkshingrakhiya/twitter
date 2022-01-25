@@ -10,7 +10,8 @@ class ToggleFollowController extends Controller
     /**
      * Toggle the following of the user.
      *
-     * @param  User  $user
+     * @param User $user
+     *
      * @return RedirectResponse
      */
     public function __invoke(User $user): RedirectResponse

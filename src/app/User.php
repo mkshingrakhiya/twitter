@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -53,7 +52,8 @@ class User extends Authenticatable
     /**
      * Determine if the user is following a user with a given userId.
      *
-     * @param  int  $userId
+     * @param int $userId
+     *
      * @return bool
      */
     public function following(int $userId): bool
@@ -78,7 +78,7 @@ class User extends Authenticatable
      */
     public function getAvatarAttribute(?string $filepath): string
     {
-        return asset('storage/' . ($filepath ?: 'images/avatars/default.jpg'));
+        return asset('storage/'.($filepath ?: 'images/avatars/default.jpg'));
     }
 
     /**
@@ -88,13 +88,14 @@ class User extends Authenticatable
      */
     public function getCoverImageAttribute(): string
     {
-        return "https://source.unsplash.com/random/700x223";
+        return 'https://source.unsplash.com/random/700x223';
     }
 
     /**
      * Hash the password.
      *
-     * @param  string  $password
+     * @param string $password
+     *
      * @return void
      */
     public function setPasswordAttribute(string $password)
