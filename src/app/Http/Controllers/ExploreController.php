@@ -15,7 +15,7 @@ class ExploreController extends Controller
     public function __invoke(): View
     {
         return view('explore', [
-            'users' => User::where('id', '!=', auth()->id())->paginate()
+            'users' => User::where('id', '!=', auth()->id())->paginate(),
         ]);
     }
 }

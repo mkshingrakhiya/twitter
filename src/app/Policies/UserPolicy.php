@@ -12,8 +12,9 @@ class UserPolicy
     /**
      * Determine if current user can edit the given user.
      *
-     * @param  User  $authUser
-     * @param  User  $user
+     * @param User $authUser
+     * @param User $user
+     *
      * @return void
      */
     public function update(User $authUser, User $user)

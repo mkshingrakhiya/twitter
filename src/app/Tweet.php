@@ -13,7 +13,7 @@ class Tweet extends Model
      * @var array
      */
     protected $fillable = [
-        'body'
+        'body',
     ];
 
     /**

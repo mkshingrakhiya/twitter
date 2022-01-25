@@ -11,7 +11,8 @@ class ProfileController extends Controller
     /**
      * Show profile.
      *
-     * @param  User  $user
+     * @param User $user
+     *
      * @return View
      */
     public function show(User $user): View
@@ -24,7 +25,8 @@ class ProfileController extends Controller
     /**
      * Show the form to edit the profile.
      *
-     * @param  User  $user
+     * @param User $user
+     *
      * @return View
      */
     public function edit(User $user): View
@@ -35,8 +37,9 @@ class ProfileController extends Controller
     /**
      * Update the profile.
      *
-     * @param  ProfileRequest  $request
-     * @param  User  $user
+     * @param ProfileRequest $request
+     * @param User           $user
+     *
      * @return void
      */
     public function update(ProfileRequest $request, User $user)
